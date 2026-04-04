@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+:root {
+  --verge-black: #1a1a1a;
+  --verge-dark: #222;
+  --verge-gray: #666;
+  --verge-light-gray: #f0f0f0;
+  --verge-border: #e0e0e0;
+  --verge-accent-tech: #7c3aed;
+  --verge-accent-science: #059669;
+  --verge-accent-culture: #ea580c;
+  --verge-red: #e8351e;
+}
+
+body {
+  font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--verge-black);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.headline-xl {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.headline-lg {
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.headline-md {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.category-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  color: white;
+}
+
+.category-technology { background: var(--verge-accent-tech); }
+.category-science { background: var(--verge-accent-science); }
+.category-culture { background: var(--verge-accent-culture); }
+
+.byline {
+  font-size: 0.78rem;
+  color: var(--verge-gray);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.article-body p {
+  font-size: 1.15rem;
+  line-height: 1.75;
+  margin-bottom: 1.5em;
+  color: #333;
+}
+
+.hover-underline:hover h2,
+.hover-underline:hover h3 {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}

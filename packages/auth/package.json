@@ -1,0 +1,35 @@
+{
+  "name": "@repo/auth",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./middleware": "./src/middleware.ts",
+    "./server": "./src/server.ts",
+    "./client": "./src/client.tsx"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "lint": "eslint src/",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.47.12",
+    "@supabase/ssr": "^0.5.2"
+  },
+  "peerDependencies": {
+    "next": "^15.0.0",
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@repo/config": "workspace:*",
+    "@repo/supabase": "workspace:*",
+    "@types/react": "^19.0.3",
+    "next": "^15.1.4",
+    "react": "^19.0.0",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  }
+}
