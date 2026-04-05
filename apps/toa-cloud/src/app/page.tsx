@@ -139,12 +139,11 @@ export default function Page() {
   };
 
   const featuresStyle: React.CSSProperties = {
-    backgroundColor: 'var(--surface-0)',
+    backgroundColor: 'var(--border-subtle)',
     padding: '80px 32px',
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
     gap: '1px',
-    backgroundColor: 'var(--border-subtle)',
   };
 
   const featureItemStyle: React.CSSProperties = {
