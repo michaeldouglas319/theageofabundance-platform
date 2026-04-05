@@ -14,9 +14,9 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "ai": "^4.1.2",
-    "@ai-sdk/openai": "^1.1.2",
-    "@ai-sdk/anthropic": "^1.1.2"
+    "ai": "^6.0.146",
+    "@ai-sdk/openai": "^3.0.50",
+    "@ai-sdk/anthropic": "^3.0.66"
   },
   "devDependencies": {
     "@repo/config": "workspace:*",

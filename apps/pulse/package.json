@@ -17,16 +17,16 @@
     "@repo/supabase": "workspace:*",
     "@repo/types": "workspace:*",
     "@repo/ui": "workspace:*",
-    "@t3-oss/env-nextjs": "^0.11.1",
+    "@t3-oss/env-nextjs": "^0.13.11",
     "@tailwindcss/postcss": "^4.2.2",
-    "next": "^15.1.4",
+    "next": "^16.2.2",
     "next-mdx-remote": "^6.0.0",
     "postcss": "^8.5.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "reading-time": "^1.5.0",
     "tailwindcss": "^4.0.0",
-    "zod": "^3.24.1"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.1",
