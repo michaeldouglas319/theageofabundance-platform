@@ -24,6 +24,9 @@ export { Tabs, TabsList, TabsTrigger, TabsContent } from './components/tabs';
 // Layout
 export { Navbar, type NavbarProps, type NavLink } from './components/navbar';
 export { SiteFooter, type SiteFooterProps, type FooterSection, type FooterLink } from './components/site-footer';
+export { HeroSection, type HeroSectionProps } from './components/hero-section';
+export { StatsGrid, type StatsGridProps, type Stat } from './components/stats-grid';
+export { FeatureGrid, type FeatureGridProps, type Feature } from './components/feature-grid';
 
 // Theme
 export { ThemeProvider, useTheme, ThemeScript } from './components/theme-provider';
