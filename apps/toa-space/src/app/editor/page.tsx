@@ -1,7 +1,7 @@
 'use client'
 
-import { Puck, Config } from '@measured-co/puck'
-import '@measured-co/puck/puck.css'
+import { Puck, Config } from '@puckeditor/core'
+import '@puckeditor/core/puck.css'
 import { ReactNode } from 'react'
 
 // Define component types
