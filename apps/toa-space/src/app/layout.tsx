@@ -1,21 +1,17 @@
-import type { Metadata } from 'next'
-import './globals.css'
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'AoA Space - Visual Platform Builder',
-  description: 'Build anything. Ship today.',
-}
+  title: 'TOA Space — Build Without Limits',
+  description: 'The AI-powered workspace for creators and teams.',
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="bg-white">
+    <html lang="en" data-theme="dark">
+      <body style={{ minHeight: '100dvh', display: 'flex', flexDirection: 'column' }}>
         {children}
       </body>
     </html>
-  )
+  );
 }

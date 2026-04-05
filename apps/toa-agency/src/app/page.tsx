@@ -1,206 +1,283 @@
-'use client'
+import React from 'react';
 
-import { Search, Download, Zap, Code2, Database, Mail, FileText, Shield } from 'lucide-react'
+export default function Page() {
+  const headerStyle: React.CSSProperties = {
+    position: 'sticky',
+    top: 0,
+    zIndex: 50,
+    backgroundColor: 'var(--surface-1)',
+    borderBottom: '1px solid var(--border-subtle)',
+    padding: '16px 32px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  };
 
-export default function Home() {
-  const agents = [
-    {
-      id: 1,
-      name: 'Web Scraper',
-      description: 'Extract and process web data intelligently',
-      icon: '🕷️',
-      category: 'Web',
-      installs: '12.4K',
-    },
-    {
-      id: 2,
-      name: 'Data Analyst',
-      description: 'Advanced analytics and insights generation',
-      icon: '📊',
-      category: 'Data',
-      installs: '8.9K',
-    },
-    {
-      id: 3,
-      name: 'Code Reviewer',
-      description: 'Automated code review and quality checks',
-      icon: '👁️',
-      category: 'Code',
-      installs: '7.2K',
-    },
-    {
-      id: 4,
-      name: 'Email Manager',
-      description: 'Intelligent email processing and filtering',
-      icon: '📧',
-      category: 'Communication',
-      installs: '5.8K',
-    },
-    {
-      id: 5,
-      name: 'Calendar Assistant',
-      description: 'Smart scheduling and meeting coordination',
-      icon: '📅',
-      category: 'Productivity',
-      installs: '6.3K',
-    },
-    {
-      id: 6,
-      name: 'File Organizer',
-      description: 'Automatic file organization and management',
-      icon: '📁',
-      category: 'Files',
-      installs: '4.1K',
-    },
-    {
-      id: 7,
-      name: 'Research Assistant',
-      description: 'Deep research and information synthesis',
-      icon: '🔬',
-      category: 'Research',
-      installs: '9.7K',
-    },
-    {
-      id: 8,
-      name: 'API Connector',
-      description: 'Connect and orchestrate multiple APIs',
-      icon: '🔗',
-      category: 'Integration',
-      installs: '11.2K',
-    },
-  ]
+  const navContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: '48px',
+    alignItems: 'center',
+  };
 
-  const categories = [
-    'All',
-    'Web',
-    'Data',
-    'Code',
-    'Files',
-    'Communication',
-    'Research',
-    'Productivity',
-  ]
+  const navLinksStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: '32px',
+    alignItems: 'center',
+    fontSize: '14px',
+    color: 'var(--text-primary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const ctaButtonStyle: React.CSSProperties = {
+    backgroundColor: 'var(--interactive)',
+    color: 'var(--interactive-fg)',
+    border: 'none',
+    padding: '8px 20px',
+    borderRadius: 'var(--radius)',
+    fontSize: '14px',
+    fontWeight: 500,
+    cursor: 'pointer',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const heroStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-0)',
+    padding: '120px 32px',
+    textAlign: 'center',
+  };
+
+  const eyebrowStyle: React.CSSProperties = {
+    fontSize: '11px',
+    fontWeight: 600,
+    letterSpacing: '1px',
+    textTransform: 'uppercase',
+    color: 'var(--text-muted)',
+    marginBottom: '24px',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const h1Style: React.CSSProperties = {
+    fontSize: '64px',
+    fontWeight: 700,
+    letterSpacing: '-0.02em',
+    color: 'var(--text-primary)',
+    marginBottom: '24px',
+    lineHeight: 1.2,
+    maxWidth: '800px',
+    margin: '0 auto 24px',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const leadStyle: React.CSSProperties = {
+    fontSize: '18px',
+    color: 'var(--text-secondary)',
+    maxWidth: '600px',
+    margin: '0 auto 48px',
+    lineHeight: 1.6,
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const heroCTAContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: '16px',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  };
+
+  const primaryButtonStyle: React.CSSProperties = {
+    backgroundColor: 'var(--interactive)',
+    color: 'var(--interactive-fg)',
+    border: 'none',
+    padding: '12px 32px',
+    borderRadius: 'var(--radius)',
+    fontSize: '16px',
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const secondaryButtonStyle: React.CSSProperties = {
+    backgroundColor: 'transparent',
+    color: 'var(--text-primary)',
+    border: '1px solid var(--border-default)',
+    padding: '12px 32px',
+    borderRadius: 'var(--radius)',
+    fontSize: '16px',
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const statsStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-0)',
+    borderTop: '1px solid var(--border-subtle)',
+    borderBottom: '1px solid var(--border-subtle)',
+    padding: '64px 32px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '32px',
+    textAlign: 'center',
+  };
+
+  const statItemStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+  };
+
+  const statNumberStyle: React.CSSProperties = {
+    fontSize: '40px',
+    fontWeight: 700,
+    color: 'var(--text-primary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const statLabelStyle: React.CSSProperties = {
+    fontSize: '14px',
+    color: 'var(--text-secondary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const featuresStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-0)',
+    padding: '80px 32px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '1px',
+    backgroundColor: 'var(--border-subtle)',
+  };
+
+  const featureItemStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-1)',
+    padding: '40px 24px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+  };
+
+  const featureTitleStyle: React.CSSProperties = {
+    fontSize: '18px',
+    fontWeight: 600,
+    color: 'var(--text-primary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const featureDescStyle: React.CSSProperties = {
+    fontSize: '14px',
+    color: 'var(--text-secondary)',
+    lineHeight: 1.6,
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const ctaSectionStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-1)',
+    padding: '80px 32px',
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '32px',
+  };
+
+  const ctaHeadlineStyle: React.CSSProperties = {
+    fontSize: '40px',
+    fontWeight: 700,
+    color: 'var(--text-primary)',
+    maxWidth: '600px',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const footerStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-1)',
+    borderTop: '1px solid var(--border-subtle)',
+    padding: '32px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    fontSize: '14px',
+    color: 'var(--text-secondary)',
+    fontFamily: 'var(--font-sans)',
+  };
 
   return (
-    <main className="bg-black">
-      {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">
-            The Agentic Services Platform
-          </h1>
-          <p className="text-xl text-zinc-400 mb-8">
-            Connect, deploy, and orchestrate AI agents at scale
-          </p>
-
-          {/* Search Bar */}
-          <div className="max-w-2xl mx-auto mb-12">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-zinc-500" size={20} />
-              <input
-                type="text"
-                placeholder="Search agents, MCPs, tools..."
-                className="w-full pl-12 pr-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:border-electric-blue focus:outline-none transition"
-              />
-            </div>
+    <div style={{ backgroundColor: 'var(--surface-0)' }}>
+      <header style={headerStyle}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)' }}>TOA</div>
+          <span style={{ fontSize: '14px', color: 'var(--text-secondary)' }}>Agency</span>
+        </div>
+        <nav style={navContainerStyle}>
+          <div style={navLinksStyle}>
+            <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Agents</a>
+            <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Marketplace</a>
+            <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Docs</a>
           </div>
+          <button style={ctaButtonStyle}>Deploy Agent</button>
+        </nav>
+      </header>
 
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
-            <div>
-              <div className="text-3xl font-bold text-electric-blue">2,400+</div>
-              <div className="text-zinc-400">Agents</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-electric-blue">180+</div>
-              <div className="text-zinc-400">MCP Servers</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-electric-blue">50K+</div>
-              <div className="text-zinc-400">Installs</div>
-            </div>
-          </div>
+      <section style={heroStyle}>
+        <div style={eyebrowStyle}>Your AI Workforce</div>
+        <h1 style={h1Style}>Deploy intelligence{'\n'}at any scale.</h1>
+        <p style={leadStyle}>
+          A marketplace and orchestration layer for AI agents — pre-built, customizable, and enterprise-ready for any workflow or mission.
+        </p>
+        <div style={heroCTAContainerStyle}>
+          <button style={primaryButtonStyle}>Deploy Agent</button>
+          <button style={secondaryButtonStyle}>Browse Agents</button>
         </div>
       </section>
 
-      {/* Category Filter */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="flex flex-wrap gap-3 justify-center">
-          {categories.map((category) => (
-            <button
-              key={category}
-              className={`px-4 py-2 rounded-full transition ${
-                category === 'All'
-                  ? 'bg-electric-blue text-white'
-                  : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
+      <section style={statsStyle}>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>340+</div>
+          <div style={statLabelStyle}>Agents</div>
+        </div>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>18K</div>
+          <div style={statLabelStyle}>Tasks / day</div>
+        </div>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>99.9%</div>
+          <div style={statLabelStyle}>Reliability</div>
+        </div>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>SOC 2</div>
+          <div style={statLabelStyle}>Compliant</div>
         </div>
       </section>
 
-      {/* Featured Agents Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <h2 className="text-3xl font-bold mb-8">Featured Agents</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {agents.map((agent) => (
-            <div
-              key={agent.id}
-              className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 hover:border-electric-blue transition group"
-            >
-              <div className="text-4xl mb-3">{agent.icon}</div>
-              <h3 className="text-lg font-bold mb-2 group-hover:text-electric-blue transition">
-                {agent.name}
-              </h3>
-              <p className="text-zinc-400 text-sm mb-4">{agent.description}</p>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs bg-zinc-800 text-zinc-300 px-2 py-1 rounded">
-                  {agent.category}
-                </span>
-                <span className="text-xs text-zinc-500">{agent.installs}</span>
-              </div>
-              <button className="w-full bg-electric-blue hover:bg-blue-600 text-white py-2 rounded transition font-semibold text-sm">
-                Install
-              </button>
-            </div>
-          ))}
+      <section style={featuresStyle}>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Pre-Built Agent Library</div>
+          <p style={featureDescStyle}>Deploy agents instantly from our curated library covering customer service, data processing, and more.</p>
+        </div>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Custom Workflows</div>
+          <p style={featureDescStyle}>Compose agents into workflows tailored to your exact business processes and operational requirements.</p>
+        </div>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Enterprise Security</div>
+          <p style={featureDescStyle}>SOC 2 compliance, encryption, audit logs, and VPC endpoints for regulated enterprise environments.</p>
+        </div>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Real-Time Analytics</div>
+          <p style={featureDescStyle}>Dashboard monitoring, performance metrics, and cost tracking for every agent and workflow running.</p>
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <h2 className="text-3xl font-bold mb-12 text-center">How It Works</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              step: 1,
-              title: 'Browse',
-              description: 'Explore our catalog of 2,400+ agents and integrations',
-              icon: '🔍',
-            },
-            {
-              step: 2,
-              title: 'Connect',
-              description: 'Link agents to your workflows and configure settings',
-              icon: '🔗',
-            },
-            {
-              step: 3,
-              title: 'Deploy',
-              description: 'Launch and scale your agentic systems instantly',
-              icon: '🚀',
-            },
-          ].map((item) => (
-            <div key={item.step} className="text-center">
-              <div className="text-5xl mb-4">{item.icon}</div>
-              <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-              <p className="text-zinc-400">{item.description}</p>
-            </div>
-          ))}
+      <section style={ctaSectionStyle}>
+        <h2 style={ctaHeadlineStyle}>Start Deploying</h2>
+        <div style={heroCTAContainerStyle}>
+          <button style={primaryButtonStyle}>Get Started</button>
+          <button style={secondaryButtonStyle}>View Demo</button>
         </div>
       </section>
-    </main>
-  )
+
+      <footer style={footerStyle}>
+        <div>TOA Agency</div>
+        <div>Copyright 2026. All rights reserved.</div>
+      </footer>
+    </div>
+  );
 }

@@ -1,84 +1,283 @@
-import Link from 'next/link';
+import React from 'react';
 
-const featuredArticles = [
-  { slug: 'artificial-intelligence', title: 'Artificial Intelligence', summary: 'The simulation of human intelligence processes by computer systems, including learning, reasoning, and self-correction.' },
-  { slug: 'quantum-computing', title: 'Quantum Computing', summary: 'A type of computation that harnesses quantum mechanical phenomena such as superposition and entanglement.' },
-  { slug: 'blockchain-technology', title: 'Blockchain Technology', summary: 'A decentralized, distributed ledger technology that records transactions across many computers.' },
-  { slug: 'crispr-gene-editing', title: 'CRISPR Gene Editing', summary: 'A revolutionary gene-editing technology using Cas9 to alter DNA sequences and modify gene function.' },
-  { slug: 'renewable-energy', title: 'Renewable Energy', summary: 'Energy from sources that are naturally replenishing, such as sunlight, wind, rain, tides, and geothermal heat.' },
-];
+export default function Page() {
+  const headerStyle: React.CSSProperties = {
+    position: 'sticky',
+    top: 0,
+    zIndex: 50,
+    backgroundColor: 'var(--surface-1)',
+    borderBottom: '1px solid var(--border-subtle)',
+    padding: '16px 32px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  };
 
-export default function HomePage() {
+  const navContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: '48px',
+    alignItems: 'center',
+  };
+
+  const navLinksStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: '32px',
+    alignItems: 'center',
+    fontSize: '14px',
+    color: 'var(--text-primary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const ctaButtonStyle: React.CSSProperties = {
+    backgroundColor: 'var(--interactive)',
+    color: 'var(--interactive-fg)',
+    border: 'none',
+    padding: '8px 20px',
+    borderRadius: 'var(--radius)',
+    fontSize: '14px',
+    fontWeight: 500,
+    cursor: 'pointer',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const heroStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-0)',
+    padding: '120px 32px',
+    textAlign: 'center',
+  };
+
+  const eyebrowStyle: React.CSSProperties = {
+    fontSize: '11px',
+    fontWeight: 600,
+    letterSpacing: '1px',
+    textTransform: 'uppercase',
+    color: 'var(--text-muted)',
+    marginBottom: '24px',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const h1Style: React.CSSProperties = {
+    fontSize: '64px',
+    fontWeight: 700,
+    letterSpacing: '-0.02em',
+    color: 'var(--text-primary)',
+    marginBottom: '24px',
+    lineHeight: 1.2,
+    maxWidth: '800px',
+    margin: '0 auto 24px',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const leadStyle: React.CSSProperties = {
+    fontSize: '18px',
+    color: 'var(--text-secondary)',
+    maxWidth: '600px',
+    margin: '0 auto 48px',
+    lineHeight: 1.6,
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const heroCTAContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: '16px',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  };
+
+  const primaryButtonStyle: React.CSSProperties = {
+    backgroundColor: 'var(--interactive)',
+    color: 'var(--interactive-fg)',
+    border: 'none',
+    padding: '12px 32px',
+    borderRadius: 'var(--radius)',
+    fontSize: '16px',
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const secondaryButtonStyle: React.CSSProperties = {
+    backgroundColor: 'transparent',
+    color: 'var(--text-primary)',
+    border: '1px solid var(--border-default)',
+    padding: '12px 32px',
+    borderRadius: 'var(--radius)',
+    fontSize: '16px',
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const statsStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-0)',
+    borderTop: '1px solid var(--border-subtle)',
+    borderBottom: '1px solid var(--border-subtle)',
+    padding: '64px 32px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '32px',
+    textAlign: 'center',
+  };
+
+  const statItemStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+  };
+
+  const statNumberStyle: React.CSSProperties = {
+    fontSize: '40px',
+    fontWeight: 700,
+    color: 'var(--text-primary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const statLabelStyle: React.CSSProperties = {
+    fontSize: '14px',
+    color: 'var(--text-secondary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const featuresStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-0)',
+    padding: '80px 32px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '1px',
+    backgroundColor: 'var(--border-subtle)',
+  };
+
+  const featureItemStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-1)',
+    padding: '40px 24px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+  };
+
+  const featureTitleStyle: React.CSSProperties = {
+    fontSize: '18px',
+    fontWeight: 600,
+    color: 'var(--text-primary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const featureDescStyle: React.CSSProperties = {
+    fontSize: '14px',
+    color: 'var(--text-secondary)',
+    lineHeight: 1.6,
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const ctaSectionStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-1)',
+    padding: '80px 32px',
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '32px',
+  };
+
+  const ctaHeadlineStyle: React.CSSProperties = {
+    fontSize: '40px',
+    fontWeight: 700,
+    color: 'var(--text-primary)',
+    maxWidth: '600px',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const footerStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-1)',
+    borderTop: '1px solid var(--border-subtle)',
+    padding: '32px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    fontSize: '14px',
+    color: 'var(--text-secondary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
   return (
-    <div>
-      {/* Article tabs */}
-      <div style={{ borderBottom: '1px solid #a2a9b1', marginBottom: '0', display: 'flex', gap: 0 }}>
-        <span style={{ padding: '8px 16px', borderBottom: '2px solid #36c', fontWeight: 'bold', fontSize: '0.9em', color: '#36c' }}>Main Page</span>
-        <a href="#" style={{ padding: '8px 16px', fontSize: '0.9em', color: '#0645AD' }}>Talk</a>
-      </div>
-
-      <h1 style={{ fontFamily: "'Linux Libertine', Georgia, serif", fontSize: '1.8em', fontWeight: 'normal', margin: '16px 0 4px', borderBottom: 'none' }}>
-        Welcome to GenWiki
-      </h1>
-      <p style={{ color: '#54595d', fontSize: '0.88em', marginBottom: '16px' }}>the free encyclopedia that <a href="#">anyone can edit</a>. <strong>5 articles</strong> in English</p>
-
-      {/* Main page content in Wikipedia's dual-column box style */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '16px' }}>
-        {/* Featured Article */}
-        <div style={{ border: '1px solid #a2a9b1', background: '#f6f6f6' }}>
-          <div style={{ background: '#cef2e0', borderBottom: '1px solid #a7d7f9', padding: '4px 10px', fontFamily: "'Linux Libertine', Georgia, serif", fontSize: '1.1em' }}>
-            From today&apos;s featured article
-          </div>
-          <div style={{ padding: '10px' }}>
-            <p><b><Link href="/artificial-intelligence">Artificial intelligence</Link></b> (AI) is the simulation of human intelligence processes by computer systems. These processes include learning (the acquisition of information and rules for using the information), reasoning (using rules to reach approximate or definite conclusions), and self-correction. The field was founded at a workshop held at <b>Dartmouth College</b> in 1956. Early researchers predicted machines would soon match human intelligence, but progress was slower than expected...</p>
-          </div>
+    <div style={{ backgroundColor: 'var(--surface-0)' }}>
+      <header style={headerStyle}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)' }}>TOA</div>
+          <span style={{ fontSize: '14px', color: 'var(--text-secondary)' }}>Wiki</span>
         </div>
+        <nav style={navContainerStyle}>
+          <div style={navLinksStyle}>
+            <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Articles</a>
+            <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Topics</a>
+            <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Contribute</a>
+          </div>
+          <button style={ctaButtonStyle}>Explore</button>
+        </nav>
+      </header>
 
-        {/* Did you know */}
-        <div style={{ border: '1px solid #a2a9b1', background: '#f6f6f6' }}>
-          <div style={{ background: '#cee8f2', borderBottom: '1px solid #a7d7f9', padding: '4px 10px', fontFamily: "'Linux Libertine', Georgia, serif", fontSize: '1.1em' }}>
-            Did you know...
-          </div>
-          <div style={{ padding: '10px' }}>
-            <ul style={{ listStyle: 'disc', paddingLeft: '20px', margin: 0 }}>
-              <li>... that <Link href="/quantum-computing">quantum computers</Link> use qubits that can exist in superposition, representing both 0 and 1 simultaneously?</li>
-              <li>... that <Link href="/crispr-gene-editing">CRISPR-Cas9</Link> won the 2020 Nobel Prize in Chemistry?</li>
-              <li>... that <Link href="/blockchain-technology">blockchain</Link> was originally designed for the digital currency Bitcoin?</li>
-              <li>... that the cost of <Link href="/renewable-energy">solar panels</Link> has dropped by over 90% since 2010?</li>
-            </ul>
-          </div>
+      <section style={heroStyle}>
+        <div style={eyebrowStyle}>The Abundance Encyclopedia</div>
+        <h1 style={h1Style}>Knowledge for{'\n'}human flourishing.</h1>
+        <p style={leadStyle}>
+          An open, continuously updated encyclopedia covering the science, practice, and philosophy of health, abundance, and human potential.
+        </p>
+        <div style={heroCTAContainerStyle}>
+          <button style={primaryButtonStyle}>Start Reading</button>
+          <button style={secondaryButtonStyle}>Browse Topics</button>
         </div>
-      </div>
+      </section>
 
-      {/* In the news / On this day */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-        <div style={{ border: '1px solid #a2a9b1', background: '#f6f6f6' }}>
-          <div style={{ background: '#cedff2', borderBottom: '1px solid #a7d7f9', padding: '4px 10px', fontFamily: "'Linux Libertine', Georgia, serif", fontSize: '1.1em' }}>
-            In the news
-          </div>
-          <div style={{ padding: '10px' }}>
-            <ul style={{ listStyle: 'disc', paddingLeft: '20px', margin: 0 }}>
-              <li>New large language models achieve <b>human-level performance</b> on graduate-level reasoning tasks.</li>
-              <li>Ocean-based <b>carbon capture</b> trials show costs under $100 per ton for the first time.</li>
-              <li>The <b>Mars Sample Return</b> mission gets a revised timeline targeting 2033.</li>
-            </ul>
-          </div>
+      <section style={statsStyle}>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>8,400+</div>
+          <div style={statLabelStyle}>Articles</div>
         </div>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>620</div>
+          <div style={statLabelStyle}>Contributors</div>
+        </div>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>240</div>
+          <div style={statLabelStyle}>Topics</div>
+        </div>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>2M+</div>
+          <div style={statLabelStyle}>Monthly readers</div>
+        </div>
+      </section>
 
-        <div style={{ border: '1px solid #a2a9b1', background: '#f6f6f6' }}>
-          <div style={{ background: '#f2cee0', borderBottom: '1px solid #a7d7f9', padding: '4px 10px', fontFamily: "'Linux Libertine', Georgia, serif", fontSize: '1.1em' }}>
-            All articles
-          </div>
-          <div style={{ padding: '10px' }}>
-            {featuredArticles.map((article) => (
-              <div key={article.slug} style={{ marginBottom: '8px' }}>
-                <Link href={`/${article.slug}`} style={{ fontWeight: 'bold' }}>{article.title}</Link>
-                <span style={{ color: '#54595d' }}> &ndash; {article.summary.slice(0, 80)}...</span>
-              </div>
-            ))}
-          </div>
+      <section style={featuresStyle}>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Expert-Verified Content</div>
+          <p style={featureDescStyle}>All articles reviewed by subject matter experts ensuring accuracy and scientific rigor throughout.</p>
         </div>
-      </div>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>AI-Enhanced Search</div>
+          <p style={featureDescStyle}>Intelligent search understanding context and intent to deliver highly relevant knowledge instantly.</p>
+        </div>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Open Contribution</div>
+          <p style={featureDescStyle}>Anyone can contribute and improve articles, maintaining knowledge integrity through community collaboration.</p>
+        </div>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Always Current</div>
+          <p style={featureDescStyle}>Latest research, updates, and perspectives integrated continuously to keep knowledge fresh.</p>
+        </div>
+      </section>
+
+      <section style={ctaSectionStyle}>
+        <h2 style={ctaHeadlineStyle}>Start Reading</h2>
+        <div style={heroCTAContainerStyle}>
+          <button style={primaryButtonStyle}>Browse Wiki</button>
+          <button style={secondaryButtonStyle}>Contribute</button>
+        </div>
+      </section>
+
+      <footer style={footerStyle}>
+        <div>TOA Wiki</div>
+        <div>Copyright 2026. All rights reserved.</div>
+      </footer>
     </div>
   );
 }

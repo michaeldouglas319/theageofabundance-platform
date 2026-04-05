@@ -1,170 +1,283 @@
-'use client'
+import React from 'react';
 
-import { Heart, MessageCircle, Repeat2, Bookmark } from 'lucide-react'
+export default function Page() {
+  const headerStyle: React.CSSProperties = {
+    position: 'sticky',
+    top: 0,
+    zIndex: 50,
+    backgroundColor: 'var(--surface-1)',
+    borderBottom: '1px solid var(--border-subtle)',
+    padding: '16px 32px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  };
 
-export default function Home() {
-  const stories = Array.from({ length: 8 }, (_, i) => ({
-    id: i,
-    name: i === 0 ? 'Your Story' : `User ${i}`,
-    gradient: `linear-gradient(135deg, hsl(${i * 45}, 70%, 50%), hsl(${i * 45 + 60}, 70%, 60%))`,
-  }))
+  const navContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: '48px',
+    alignItems: 'center',
+  };
 
-  const posts = [
-    {
-      id: 1,
-      avatar: '👤',
-      name: 'Sarah Chen',
-      handle: '@sarahchen',
-      time: '2h',
-      content:
-        'Just finished my first week with the new abundance mindset framework. The shift in perspective is incredible. Already seeing different opportunities everywhere.',
-      likes: 124,
-      comments: 38,
-      reposts: 12,
-      bookmarks: 8,
-    },
-    {
-      id: 2,
-      avatar: '🚀',
-      name: 'Alex Rodriguez',
-      handle: '@alextech',
-      time: '4h',
-      content:
-        'The future of work is here and it\'s collaborative. Watching teams leverage AI agents to amplify human creativity is the real story.',
-      likes: 342,
-      comments: 87,
-      reposts: 56,
-      bookmarks: 32,
-    },
-    {
-      id: 3,
-      avatar: '🧘',
-      name: 'Maya Patel',
-      handle: '@mayawellness',
-      time: '6h',
-      content:
-        'Wellness isn\'t a destination, it\'s a continuous practice. Today\'s reminder: take three minutes to breathe intentionally.',
-      image: true,
-      likes: 203,
-      comments: 45,
-      reposts: 23,
-      bookmarks: 67,
-    },
-    {
-      id: 4,
-      avatar: '🌱',
-      name: 'Jordan Blake',
-      handle: '@sustainablefuture',
-      time: '8h',
-      content:
-        'Green technology adoption is accelerating faster than predictions. Communities building sustainable infrastructure are becoming the blueprints for tomorrow.',
-      likes: 456,
-      comments: 123,
-      reposts: 89,
-      bookmarks: 145,
-    },
-    {
-      id: 5,
-      avatar: '💡',
-      name: 'Priya Sharma',
-      handle: '@priya_innovates',
-      time: '12h',
-      content:
-        'Abundance thinking challenges scarcity mindset. When we believe there\'s enough for everyone, we naturally create systems that work for everyone.',
-      likes: 567,
-      comments: 234,
-      reposts: 178,
-      bookmarks: 203,
-    },
-  ]
+  const navLinksStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: '32px',
+    alignItems: 'center',
+    fontSize: '14px',
+    color: 'var(--text-primary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const ctaButtonStyle: React.CSSProperties = {
+    backgroundColor: 'var(--interactive)',
+    color: 'var(--interactive-fg)',
+    border: 'none',
+    padding: '8px 20px',
+    borderRadius: 'var(--radius)',
+    fontSize: '14px',
+    fontWeight: 500,
+    cursor: 'pointer',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const heroStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-0)',
+    padding: '120px 32px',
+    textAlign: 'center',
+  };
+
+  const eyebrowStyle: React.CSSProperties = {
+    fontSize: '11px',
+    fontWeight: 600,
+    letterSpacing: '1px',
+    textTransform: 'uppercase',
+    color: 'var(--text-muted)',
+    marginBottom: '24px',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const h1Style: React.CSSProperties = {
+    fontSize: '64px',
+    fontWeight: 700,
+    letterSpacing: '-0.02em',
+    color: 'var(--text-primary)',
+    marginBottom: '24px',
+    lineHeight: 1.2,
+    maxWidth: '800px',
+    margin: '0 auto 24px',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const leadStyle: React.CSSProperties = {
+    fontSize: '18px',
+    color: 'var(--text-secondary)',
+    maxWidth: '600px',
+    margin: '0 auto 48px',
+    lineHeight: 1.6,
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const heroCTAContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: '16px',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  };
+
+  const primaryButtonStyle: React.CSSProperties = {
+    backgroundColor: 'var(--interactive)',
+    color: 'var(--interactive-fg)',
+    border: 'none',
+    padding: '12px 32px',
+    borderRadius: 'var(--radius)',
+    fontSize: '16px',
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const secondaryButtonStyle: React.CSSProperties = {
+    backgroundColor: 'transparent',
+    color: 'var(--text-primary)',
+    border: '1px solid var(--border-default)',
+    padding: '12px 32px',
+    borderRadius: 'var(--radius)',
+    fontSize: '16px',
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const statsStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-0)',
+    borderTop: '1px solid var(--border-subtle)',
+    borderBottom: '1px solid var(--border-subtle)',
+    padding: '64px 32px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '32px',
+    textAlign: 'center',
+  };
+
+  const statItemStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+  };
+
+  const statNumberStyle: React.CSSProperties = {
+    fontSize: '40px',
+    fontWeight: 700,
+    color: 'var(--text-primary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const statLabelStyle: React.CSSProperties = {
+    fontSize: '14px',
+    color: 'var(--text-secondary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const featuresStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-0)',
+    padding: '80px 32px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '1px',
+    backgroundColor: 'var(--border-subtle)',
+  };
+
+  const featureItemStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-1)',
+    padding: '40px 24px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+  };
+
+  const featureTitleStyle: React.CSSProperties = {
+    fontSize: '18px',
+    fontWeight: 600,
+    color: 'var(--text-primary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const featureDescStyle: React.CSSProperties = {
+    fontSize: '14px',
+    color: 'var(--text-secondary)',
+    lineHeight: 1.6,
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const ctaSectionStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-1)',
+    padding: '80px 32px',
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '32px',
+  };
+
+  const ctaHeadlineStyle: React.CSSProperties = {
+    fontSize: '40px',
+    fontWeight: 700,
+    color: 'var(--text-primary)',
+    maxWidth: '600px',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const footerStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-1)',
+    borderTop: '1px solid var(--border-subtle)',
+    padding: '32px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    fontSize: '14px',
+    color: 'var(--text-secondary)',
+    fontFamily: 'var(--font-sans)',
+  };
 
   return (
-    <main className="max-w-2xl mx-auto">
-      {/* Stories Section */}
-      <div className="bg-[#0f0f13] border-b border-[#2d2d3d] p-4 sticky top-0 z-10">
-        <div className="flex space-x-4 overflow-x-auto pb-2 scrollbar-hide">
-          {stories.map((story) => (
-            <div key={story.id} className="flex flex-col items-center flex-shrink-0">
-              <div
-                className="w-16 h-16 rounded-full flex items-center justify-center text-2xl border-2 border-[#7c3aed] hover:border-[#6d28d9] transition"
-                style={story.id === 0 ? { backgroundColor: '#1a1a24' } : { background: story.gradient }}
-              >
-                {story.id === 0 ? '+' : story.name[0]}
-              </div>
-              <span className="text-xs text-[#9ca3af] mt-2 text-center w-16 truncate">
-                {story.name}
-              </span>
-            </div>
-          ))}
+    <div style={{ backgroundColor: 'var(--surface-0)' }}>
+      <header style={headerStyle}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)' }}>TOA</div>
+          <span style={{ fontSize: '14px', color: 'var(--text-secondary)' }}>Network</span>
         </div>
-      </div>
-
-      {/* Composer */}
-      <div className="bg-[#0f0f13] border-b border-[#2d2d3d] p-4">
-        <div className="flex space-x-4">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#7c3aed] to-[#4f46e5] flex-shrink-0"></div>
-          <div className="flex-1">
-            <textarea
-              placeholder="What's on your mind?"
-              className="w-full bg-[#1a1a24] border border-[#2d2d3d] rounded-lg p-3 text-white placeholder-[#6b7280] resize-none focus:border-[#7c3aed] focus:outline-none"
-              rows={3}
-            />
-            <div className="mt-3 flex justify-end">
-              <button className="bg-[#7c3aed] hover:bg-[#6d28d9] text-white px-6 py-2 rounded-full font-semibold transition">
-                Post
-              </button>
-            </div>
+        <nav style={navContainerStyle}>
+          <div style={navLinksStyle}>
+            <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Explore</a>
+            <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Communities</a>
+            <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Events</a>
           </div>
+          <button style={ctaButtonStyle}>Join Network</button>
+        </nav>
+      </header>
+
+      <section style={heroStyle}>
+        <div style={eyebrowStyle}>Connect with Abundance Seekers</div>
+        <h1 style={h1Style}>The network built{'\n'}for growth.</h1>
+        <p style={leadStyle}>
+          A thoughtful social platform for people serious about health, knowledge, and building an abundant life — together.
+        </p>
+        <div style={heroCTAContainerStyle}>
+          <button style={primaryButtonStyle}>Join Network</button>
+          <button style={secondaryButtonStyle}>Explore Communities</button>
         </div>
-      </div>
+      </section>
 
-      {/* Posts Feed */}
-      <div>
-        {posts.map((post) => (
-          <div
-            key={post.id}
-            className="bg-[#0f0f13] border-b border-[#2d2d3d] p-4 hover:bg-[#1a1a1f] transition cursor-pointer"
-          >
-            <div className="flex space-x-3">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#7c3aed] to-[#4f46e5] flex items-center justify-center text-xl flex-shrink-0">
-                {post.avatar}
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center space-x-2">
-                  <span className="font-bold text-white hover:underline">{post.name}</span>
-                  <span className="text-[#6b7280]">{post.handle}</span>
-                  <span className="text-[#6b7280]">·</span>
-                  <span className="text-[#6b7280]">{post.time}</span>
-                </div>
-                <p className="text-white mt-2">{post.content}</p>
+      <section style={statsStyle}>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>40K+</div>
+          <div style={statLabelStyle}>Members</div>
+        </div>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>820</div>
+          <div style={statLabelStyle}>Communities</div>
+        </div>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>1.2M</div>
+          <div style={statLabelStyle}>Posts</div>
+        </div>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>38</div>
+          <div style={statLabelStyle}>Countries</div>
+        </div>
+      </section>
 
-                {post.image && (
-                  <div className="mt-3 w-full h-48 bg-gradient-to-br from-[#7c3aed] to-[#4f46e5] rounded-lg opacity-50"></div>
-                )}
+      <section style={featuresStyle}>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Meaningful Connections</div>
+          <p style={featureDescStyle}>Find your people — communities organized around shared values, interests, and growth objectives.</p>
+        </div>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Knowledge Sharing</div>
+          <p style={featureDescStyle}>Learn from practitioners, researchers, and thought leaders in health, wellness, and abundance.</p>
+        </div>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Community Circles</div>
+          <p style={featureDescStyle}>Deep, structured conversations with accountability partners working toward similar goals.</p>
+        </div>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Safe by Design</div>
+          <p style={featureDescStyle}>Built-in moderation, verification, and privacy controls ensuring a respectful community.</p>
+        </div>
+      </section>
 
-                <div className="flex justify-between mt-3 text-[#6b7280] max-w-md text-sm">
-                  <div className="flex items-center space-x-2 hover:text-[#7c3aed] transition">
-                    <MessageCircle size={16} />
-                    <span>{post.comments}</span>
-                  </div>
-                  <div className="flex items-center space-x-2 hover:text-[#7c3aed] transition">
-                    <Repeat2 size={16} />
-                    <span>{post.reposts}</span>
-                  </div>
-                  <div className="flex items-center space-x-2 hover:text-[#7c3aed] transition">
-                    <Heart size={16} />
-                    <span>{post.likes}</span>
-                  </div>
-                  <div className="flex items-center space-x-2 hover:text-[#7c3aed] transition">
-                    <Bookmark size={16} />
-                    <span>{post.bookmarks}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </main>
-  )
+      <section style={ctaSectionStyle}>
+        <h2 style={ctaHeadlineStyle}>Create Your Profile</h2>
+        <div style={heroCTAContainerStyle}>
+          <button style={primaryButtonStyle}>Sign Up Now</button>
+          <button style={secondaryButtonStyle}>Learn More</button>
+        </div>
+      </section>
+
+      <footer style={footerStyle}>
+        <div>TOA Network</div>
+        <div>Copyright 2026. All rights reserved.</div>
+      </footer>
+    </div>
+  );
 }

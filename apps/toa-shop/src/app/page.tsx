@@ -1,163 +1,283 @@
-import Link from 'next/link';
+import React from 'react';
 
-const featuredProducts = [
-  { id: 1, name: 'Wellness Journal', price: 48, image: 'journal' },
-  { id: 2, name: 'Morning Ritual Kit', price: 124, image: 'ritual' },
-  { id: 3, name: 'Abundance Planner', price: 36, image: 'planner' },
-  { id: 4, name: 'Crystal Collection', price: 89, image: 'crystal' },
-  { id: 5, name: 'Meditation Cushion', price: 75, image: 'cushion' },
-  { id: 6, name: 'Premium Tea Collection', price: 42, image: 'tea' },
-];
+export default function Page() {
+  const headerStyle: React.CSSProperties = {
+    position: 'sticky',
+    top: 0,
+    zIndex: 50,
+    backgroundColor: 'var(--surface-1)',
+    borderBottom: '1px solid var(--border-subtle)',
+    padding: '16px 32px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  };
 
-export default function HomePage() {
+  const navContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: '48px',
+    alignItems: 'center',
+  };
+
+  const navLinksStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: '32px',
+    alignItems: 'center',
+    fontSize: '14px',
+    color: 'var(--text-primary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const ctaButtonStyle: React.CSSProperties = {
+    backgroundColor: 'var(--interactive)',
+    color: 'var(--interactive-fg)',
+    border: 'none',
+    padding: '8px 20px',
+    borderRadius: 'var(--radius)',
+    fontSize: '14px',
+    fontWeight: 500,
+    cursor: 'pointer',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const heroStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-0)',
+    padding: '120px 32px',
+    textAlign: 'center',
+  };
+
+  const eyebrowStyle: React.CSSProperties = {
+    fontSize: '11px',
+    fontWeight: 600,
+    letterSpacing: '1px',
+    textTransform: 'uppercase',
+    color: 'var(--text-muted)',
+    marginBottom: '24px',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const h1Style: React.CSSProperties = {
+    fontSize: '64px',
+    fontWeight: 700,
+    letterSpacing: '-0.02em',
+    color: 'var(--text-primary)',
+    marginBottom: '24px',
+    lineHeight: 1.2,
+    maxWidth: '800px',
+    margin: '0 auto 24px',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const leadStyle: React.CSSProperties = {
+    fontSize: '18px',
+    color: 'var(--text-secondary)',
+    maxWidth: '600px',
+    margin: '0 auto 48px',
+    lineHeight: 1.6,
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const heroCTAContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: '16px',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  };
+
+  const primaryButtonStyle: React.CSSProperties = {
+    backgroundColor: 'var(--interactive)',
+    color: 'var(--interactive-fg)',
+    border: 'none',
+    padding: '12px 32px',
+    borderRadius: 'var(--radius)',
+    fontSize: '16px',
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const secondaryButtonStyle: React.CSSProperties = {
+    backgroundColor: 'transparent',
+    color: 'var(--text-primary)',
+    border: '1px solid var(--border-default)',
+    padding: '12px 32px',
+    borderRadius: 'var(--radius)',
+    fontSize: '16px',
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const statsStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-0)',
+    borderTop: '1px solid var(--border-subtle)',
+    borderBottom: '1px solid var(--border-subtle)',
+    padding: '64px 32px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '32px',
+    textAlign: 'center',
+  };
+
+  const statItemStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+  };
+
+  const statNumberStyle: React.CSSProperties = {
+    fontSize: '40px',
+    fontWeight: 700,
+    color: 'var(--text-primary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const statLabelStyle: React.CSSProperties = {
+    fontSize: '14px',
+    color: 'var(--text-secondary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const featuresStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-0)',
+    padding: '80px 32px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '1px',
+    backgroundColor: 'var(--border-subtle)',
+  };
+
+  const featureItemStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-1)',
+    padding: '40px 24px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+  };
+
+  const featureTitleStyle: React.CSSProperties = {
+    fontSize: '18px',
+    fontWeight: 600,
+    color: 'var(--text-primary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const featureDescStyle: React.CSSProperties = {
+    fontSize: '14px',
+    color: 'var(--text-secondary)',
+    lineHeight: 1.6,
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const ctaSectionStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-1)',
+    padding: '80px 32px',
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '32px',
+  };
+
+  const ctaHeadlineStyle: React.CSSProperties = {
+    fontSize: '40px',
+    fontWeight: 700,
+    color: 'var(--text-primary)',
+    maxWidth: '600px',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const footerStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-1)',
+    borderTop: '1px solid var(--border-subtle)',
+    padding: '32px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    fontSize: '14px',
+    color: 'var(--text-secondary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
   return (
-    <div className="bg-white">
-      {/* Hero Section */}
-      <section className="relative min-h-[600px] bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center text-center text-white px-4">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
-            Curated for the<br />Abundant Life
-          </h1>
-          <Link href="/products" className="inline-block px-8 py-3 bg-[#c9a96e] text-[#111111] font-semibold rounded-lg hover:bg-[#b8985d] transition">
-            Shop Now
-          </Link>
+    <div style={{ backgroundColor: 'var(--surface-0)' }}>
+      <header style={headerStyle}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)' }}>TOA</div>
+          <span style={{ fontSize: '14px', color: 'var(--text-secondary)' }}>Shop</span>
         </div>
-      </section>
-
-      {/* Featured Categories */}
-      <section className="max-w-7xl mx-auto px-4 py-24">
-        <h2 className="text-4xl font-bold text-center mb-16 text-[#111111]">
-          Shop by Category
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Link href="/products" className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-              <span className="text-2xl">🌿</span>
-            </div>
-            <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition"></div>
-            <div className="absolute inset-0 flex items-end justify-start p-6">
-              <h3 className="text-2xl font-bold text-white">Wellness</h3>
-            </div>
-          </Link>
-
-          <Link href="/products" className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
-              <span className="text-2xl">💻</span>
-            </div>
-            <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition"></div>
-            <div className="absolute inset-0 flex items-end justify-start p-6">
-              <h3 className="text-2xl font-bold text-white">Digital Tools</h3>
-            </div>
-          </Link>
-
-          <Link href="/products" className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
-              <span className="text-2xl">✨</span>
-            </div>
-            <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition"></div>
-            <div className="absolute inset-0 flex items-end justify-start p-6">
-              <h3 className="text-2xl font-bold text-white">Experiences</h3>
-            </div>
-          </Link>
-
-          <Link href="/products" className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
-            <div className="absolute inset-0 bg-gradient-to-br from-rose-400 to-rose-600 flex items-center justify-center">
-              <span className="text-2xl">👕</span>
-            </div>
-            <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition"></div>
-            <div className="absolute inset-0 flex items-end justify-start p-6">
-              <h3 className="text-2xl font-bold text-white">Apparel</h3>
-            </div>
-          </Link>
-        </div>
-      </section>
-
-      {/* Featured Products */}
-      <section className="max-w-7xl mx-auto px-4 py-24">
-        <h2 className="text-4xl font-bold text-center mb-16 text-[#111111]">
-          Featured Products
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredProducts.map((product) => (
-            <Link href={`/products/${product.image}`} key={product.id}>
-              <div className="group cursor-pointer">
-                <div className="relative h-64 bg-gradient-to-br from-gray-200 to-gray-300 rounded-lg overflow-hidden mb-4">
-                  <div className="absolute inset-0 flex items-center justify-center text-6xl group-hover:scale-110 transition transform duration-300">
-                    {product.image === 'journal' && '📓'}
-                    {product.image === 'ritual' && '🌅'}
-                    {product.image === 'planner' && '📅'}
-                    {product.image === 'crystal' && '💎'}
-                    {product.image === 'cushion' && '🧘'}
-                    {product.image === 'tea' && '🫖'}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-[#111111] mb-2 group-hover:text-[#c9a96e] transition">
-                  {product.name}
-                </h3>
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-[#c9a96e]">${product.price}</span>
-                  <button className="px-4 py-2 bg-[#111111] text-white rounded hover:bg-[#333333] transition">
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Our Promise Section */}
-      <section className="bg-gray-50 py-24">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16 text-[#111111]">
-            Our Promise
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="text-center">
-              <div className="text-5xl mb-4">🌍</div>
-              <h3 className="text-2xl font-bold text-[#111111] mb-4">
-                Ethically Sourced
-              </h3>
-              <p className="text-gray-600">
-                Every product is carefully sourced from suppliers who share our commitment to ethical practices and fair wages.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="text-5xl mb-4">🌱</div>
-              <h3 className="text-2xl font-bold text-[#111111] mb-4">
-                Carbon Neutral
-              </h3>
-              <p className="text-gray-600">
-                We offset 100% of our carbon emissions through verified environmental projects and sustainable shipping.
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="text-5xl mb-4">♾️</div>
-              <h3 className="text-2xl font-bold text-[#111111] mb-4">
-                Lifetime Guarantee
-              </h3>
-              <p className="text-gray-600">
-                We stand behind every product. If you're not satisfied, we'll replace or refund it, no questions asked.
-              </p>
-            </div>
+        <nav style={navContainerStyle}>
+          <div style={navLinksStyle}>
+            <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Products</a>
+            <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Collections</a>
+            <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Brands</a>
           </div>
+          <button style={ctaButtonStyle}>Shop Now</button>
+        </nav>
+      </header>
+
+      <section style={heroStyle}>
+        <div style={eyebrowStyle}>Curated for the Abundant Life</div>
+        <h1 style={h1Style}>Goods that align{'\n'}with your values.</h1>
+        <p style={leadStyle}>
+          A curated marketplace of premium, sustainable products selected for quality, ethics, and alignment with the abundant life.
+        </p>
+        <div style={heroCTAContainerStyle}>
+          <button style={primaryButtonStyle}>Shop Now</button>
+          <button style={secondaryButtonStyle}>Browse Collections</button>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="max-w-7xl mx-auto px-4 py-24 text-center">
-        <h2 className="text-4xl font-bold mb-6 text-[#111111]">
-          Discover Your Abundant Lifestyle
-        </h2>
-        <p className="text-xl text-gray-600 mb-8">
-          Carefully curated products for living your best life.
-        </p>
-        <Link href="/products" className="inline-block px-8 py-3 bg-[#111111] text-white font-semibold rounded-lg hover:bg-[#333333] transition">
-          Explore Collections
-        </Link>
+      <section style={statsStyle}>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>2,400+</div>
+          <div style={statLabelStyle}>Products</div>
+        </div>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>180</div>
+          <div style={statLabelStyle}>Brands</div>
+        </div>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>98%</div>
+          <div style={statLabelStyle}>Satisfaction</div>
+        </div>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>Carbon</div>
+          <div style={statLabelStyle}>Neutral shipping</div>
+        </div>
       </section>
+
+      <section style={featuresStyle}>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Expert Curation</div>
+          <p style={featureDescStyle}>Hand-selected items evaluated for quality, ethics, and alignment with your values and lifestyle.</p>
+        </div>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Sustainable Standards</div>
+          <p style={featureDescStyle}>Every brand meets rigorous sustainability and ethical sourcing criteria across our entire catalog.</p>
+        </div>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Community Reviews</div>
+          <p style={featureDescStyle}>Real feedback from members about quality, durability, and actual impact of every product offered.</p>
+        </div>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Global Delivery</div>
+          <p style={featureDescStyle}>Fast, reliable shipping to 150+ countries with full transparency on environmental impact per order.</p>
+        </div>
+      </section>
+
+      <section style={ctaSectionStyle}>
+        <h2 style={ctaHeadlineStyle}>Browse the Collection</h2>
+        <div style={heroCTAContainerStyle}>
+          <button style={primaryButtonStyle}>Start Shopping</button>
+          <button style={secondaryButtonStyle}>View Brands</button>
+        </div>
+      </section>
+
+      <footer style={footerStyle}>
+        <div>TOA Shop</div>
+        <div>Copyright 2026. All rights reserved.</div>
+      </footer>
     </div>
   );
 }

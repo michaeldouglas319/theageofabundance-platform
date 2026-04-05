@@ -1,0 +1,366 @@
+/**
+ * THE VOID — Monochromatic Depth Design System
+ * Pure achromatic OKLCH scale · 5 elevation levels · R3F-safe
+ *
+ * Depth model (dark-first):
+ *   surface-0  →  deepest (page bg)
+ *   surface-4  →  highest (tooltips, popovers)
+ *
+ * Philosophy: depth through luminosity only. Zero chromatic shift.
+ */
+
+/* ─── DARK MODE (default) ──────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  /* Elevation — 5 achromatic depth layers */
+  --surface-0:  oklch(6.5%  0 0);   /* void         #0a0a0a */
+  --surface-1:  oklch(10%   0 0);   /* base         #171717 */
+  --surface-2:  oklch(14%   0 0);   /* raised       #212121 */
+  --surface-3:  oklch(18.5% 0 0);   /* overlay      #2b2b2b */
+  --surface-4:  oklch(24%   0 0);   /* float        #393939 */
+
+  /* Text hierarchy */
+  --text-primary:   oklch(96%  0 0); /* #f5f5f5 */
+  --text-secondary: oklch(65%  0 0); /* #a3a3a3 */
+  --text-muted:     oklch(43%  0 0); /* #666666 */
+  --text-disabled:  oklch(28%  0 0); /* #404040 */
+
+  /* Borders */
+  --border-subtle:  oklch(15%  0 0); /* #222222 */
+  --border-default: oklch(22%  0 0); /* #333333 */
+  --border-strong:  oklch(33%  0 0); /* #505050 */
+
+  /* Interaction states */
+  --interactive:         oklch(96%  0 0); /* white — primary action */
+  --interactive-hover:   oklch(86%  0 0);
+  --interactive-active:  oklch(76%  0 0);
+  --interactive-fg:      oklch(6.5% 0 0); /* text ON interactive bg */
+
+  /* Status */
+  --destructive:    oklch(58%  0.22 25);
+  --destructive-fg: oklch(96%  0    0);
+  --warning:        oklch(75%  0.18 80);
+  --success:        oklch(68%  0.18 145);
+
+  /* ── shadcn/ui variable aliases ─────────────────────────────── */
+  --background:           var(--surface-0);
+  --foreground:           var(--text-primary);
+  --card:                 var(--surface-1);
+  --card-foreground:      var(--text-primary);
+  --popover:              var(--surface-3);
+  --popover-foreground:   var(--text-primary);
+  --primary:              var(--interactive);
+  --primary-foreground:   var(--interactive-fg);
+  --secondary:            var(--surface-2);
+  --secondary-foreground: var(--text-secondary);
+  --muted:                var(--surface-1);
+  --muted-foreground:     var(--text-muted);
+  --accent:               var(--surface-2);
+  --accent-foreground:    var(--text-primary);
+  --border:               var(--border-default);
+  --input:                var(--border-default);
+  --ring:                 var(--interactive);
+  --radius:               0.375rem;
+}
+
+/* ─── LIGHT MODE ────────────────────────────────────────────────── */
+[data-theme="light"],
+.light {
+  --surface-0:  oklch(98%   0 0);   /* #fafafa */
+  --surface-1:  oklch(95%   0 0);   /* #f2f2f2 */
+  --surface-2:  oklch(91%   0 0);   /* #e8e8e8 */
+  --surface-3:  oklch(86%   0 0);   /* #dbdbdb */
+  --surface-4:  oklch(80%   0 0);   /* #cbcbcb */
+
+  --text-primary:   oklch(8%   0 0); /* #111111 */
+  --text-secondary: oklch(38%  0 0); /* #5c5c5c */
+  --text-muted:     oklch(58%  0 0); /* #909090 */
+  --text-disabled:  oklch(72%  0 0); /* #b8b8b8 */
+
+  --border-subtle:  oklch(90%  0 0); /* #e5e5e5 */
+  --border-default: oklch(82%  0 0); /* #d0d0d0 */
+  --border-strong:  oklch(68%  0 0); /* #adadad */
+
+  --interactive:       oklch(8%   0 0); /* black — primary action */
+  --interactive-hover: oklch(20%  0 0);
+  --interactive-active:oklch(32%  0 0);
+  --interactive-fg:    oklch(98%  0 0); /* text ON interactive bg */
+}
+
+/* ─── SYSTEM PREFERENCE FALLBACK ───────────────────────────────── */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --surface-0:  oklch(98%   0 0);
+    --surface-1:  oklch(95%   0 0);
+    --surface-2:  oklch(91%   0 0);
+    --surface-3:  oklch(86%   0 0);
+    --surface-4:  oklch(80%   0 0);
+
+    --text-primary:   oklch(8%   0 0);
+    --text-secondary: oklch(38%  0 0);
+    --text-muted:     oklch(58%  0 0);
+    --text-disabled:  oklch(72%  0 0);
+
+    --border-subtle:  oklch(90%  0 0);
+    --border-default: oklch(82%  0 0);
+    --border-strong:  oklch(68%  0 0);
+
+    --interactive:       oklch(8%   0 0);
+    --interactive-hover: oklch(20%  0 0);
+    --interactive-active:oklch(32%  0 0);
+    --interactive-fg:    oklch(98%  0 0);
+  }
+}
+
+/* ─── TAILWIND v4 THEME MAPPING ─────────────────────────────────── */
+@theme inline {
+  /* Surface colors */
+  --color-surface-0:  var(--surface-0);
+  --color-surface-1:  var(--surface-1);
+  --color-surface-2:  var(--surface-2);
+  --color-surface-3:  var(--surface-3);
+  --color-surface-4:  var(--surface-4);
+
+  /* Text colors */
+  --color-text-primary:   var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted:     var(--text-muted);
+  --color-text-disabled:  var(--text-disabled);
+
+  /* shadcn aliases */
+  --color-background:           var(--background);
+  --color-foreground:           var(--foreground);
+  --color-card:                 var(--card);
+  --color-card-foreground:      var(--card-foreground);
+  --color-popover:              var(--popover);
+  --color-popover-foreground:   var(--popover-foreground);
+  --color-primary:              var(--primary);
+  --color-primary-foreground:   var(--primary-foreground);
+  --color-secondary:            var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:                var(--muted);
+  --color-muted-foreground:     var(--muted-foreground);
+  --color-accent:               var(--accent);
+  --color-accent-foreground:    var(--accent-foreground);
+  --color-destructive:          var(--destructive);
+  --color-border:               var(--border);
+  --color-input:                var(--input);
+  --color-ring:                 var(--ring);
+  --color-interactive:          var(--interactive);
+  --color-interactive-fg:       var(--interactive-fg);
+
+  /* Border radius */
+  --radius-sm:  calc(var(--radius) - 2px);
+  --radius-md:  var(--radius);
+  --radius-lg:  calc(var(--radius) + 2px);
+  --radius-xl:  calc(var(--radius) * 2);
+  --radius-2xl: calc(var(--radius) * 3);
+
+  /* Typography — Geist scale */
+  --font-sans: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ─── BASE RESETS ───────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  border-color: var(--border-subtle);
+}
+
+/* R3F safe: never apply box-sizing to canvas */
+canvas {
+  box-sizing: content-box;
+  display: block;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--surface-0);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100dvh;
+}
+
+/* ─── TYPOGRAPHY ────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.875rem); }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p { color: var(--text-secondary); margin-bottom: 1em; }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--text-primary);
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 150ms ease, color 150ms ease;
+}
+a:hover { text-decoration-color: var(--text-primary); }
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+code {
+  background: var(--surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: calc(var(--radius) - 4px);
+  padding: 0.15em 0.4em;
+}
+
+pre {
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  padding: 1.25rem;
+}
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.875rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+  margin: 2rem 0;
+}
+
+/* ─── SELECTION ─────────────────────────────────────────────────── */
+::selection {
+  background: var(--text-primary);
+  color: var(--surface-0);
+}
+
+/* ─── SCROLLBAR ─────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--surface-0); }
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ─── FOCUS ─────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--interactive);
+  outline-offset: 2px;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+/* ─── UTILITY CLASSES ───────────────────────────────────────────── */
+.surface-0 { background-color: var(--surface-0); }
+.surface-1 { background-color: var(--surface-1); }
+.surface-2 { background-color: var(--surface-2); }
+.surface-3 { background-color: var(--surface-3); }
+.surface-4 { background-color: var(--surface-4); }
+
+.text-primary   { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted-void { color: var(--text-muted); }
+
+.border-subtle  { border-color: var(--border-subtle); }
+.border-default { border-color: var(--border-default); }
+.border-strong  { border-color: var(--border-strong); }
+
+/* Depth glow — adds subtle inner shadow for elevation sense */
+.depth-1 { box-shadow: inset 0 1px 0 oklch(100% 0 0 / 4%); }
+.depth-2 { box-shadow: 0 1px 3px oklch(0% 0 0 / 30%), 0 1px 2px oklch(0% 0 0 / 20%), inset 0 1px 0 oklch(100% 0 0 / 5%); }
+.depth-3 { box-shadow: 0 4px 6px oklch(0% 0 0 / 30%), 0 2px 4px oklch(0% 0 0 / 25%), inset 0 1px 0 oklch(100% 0 0 / 6%); }
+.depth-4 { box-shadow: 0 10px 15px oklch(0% 0 0 / 35%), 0 4px 6px oklch(0% 0 0 / 25%), inset 0 1px 0 oklch(100% 0 0 / 7%); }
+
+/* ─── CONTAINER ─────────────────────────────────────────────────── */
+.container-void {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+
+/* ─── PROSE ─────────────────────────────────────────────────────── */
+.prose-void {
+  max-width: 72ch;
+  color: var(--text-secondary);
+}
+.prose-void h1, .prose-void h2, .prose-void h3,
+.prose-void h4, .prose-void h5, .prose-void h6 {
+  color: var(--text-primary);
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+.prose-void p { margin-bottom: 1.25em; }
+.prose-void a { color: var(--text-primary); font-weight: 500; }
+.prose-void blockquote {
+  border-left: 2px solid var(--border-default);
+  padding-left: 1.25rem;
+  color: var(--text-muted);
+  margin: 1.5em 0;
+  font-style: italic;
+}
+.prose-void ul, .prose-void ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25em;
+}
+.prose-void li { margin-bottom: 0.35em; }
+.prose-void table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+}
+.prose-void th, .prose-void td {
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--border-subtle);
+  text-align: left;
+}
+.prose-void th {
+  background: var(--surface-1);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ─── ANIMATIONS ────────────────────────────────────────────────── */
+@keyframes fade-in  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slide-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scale-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+
+.animate-fade-in  { animation: fade-in  200ms ease forwards; }
+.animate-slide-up { animation: slide-up 250ms ease forwards; }
+.animate-scale-in { animation: scale-in 200ms ease forwards; }
+
+/* ─── R3F CANVAS ISOLATION ──────────────────────────────────────── */
+[data-r3f-root] {
+  position: relative;
+  isolation: isolate;
+}
+[data-r3f-root] canvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}

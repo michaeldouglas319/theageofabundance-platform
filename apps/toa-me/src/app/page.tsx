@@ -1,182 +1,284 @@
-import Link from 'next/link';
+import React from 'react';
 
-export default function HomePage() {
+export default function Page() {
+  const headerStyle: React.CSSProperties = {
+    position: 'sticky',
+    top: 0,
+    zIndex: 50,
+    backgroundColor: 'var(--surface-1)',
+    borderBottom: '1px solid var(--border-subtle)',
+    padding: '16px 32px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  };
+
+  const navContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: '48px',
+    alignItems: 'center',
+  };
+
+  const navLinksStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: '32px',
+    alignItems: 'center',
+    fontSize: '14px',
+    color: 'var(--text-primary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const ctaButtonStyle: React.CSSProperties = {
+    backgroundColor: 'var(--interactive)',
+    color: 'var(--interactive-fg)',
+    border: 'none',
+    padding: '8px 20px',
+    borderRadius: 'var(--radius)',
+    fontSize: '14px',
+    fontWeight: 500,
+    cursor: 'pointer',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const heroStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-0)',
+    padding: '120px 32px',
+    textAlign: 'center',
+  };
+
+  const eyebrowStyle: React.CSSProperties = {
+    fontSize: '11px',
+    fontWeight: 600,
+    letterSpacing: '1px',
+    textTransform: 'uppercase',
+    color: 'var(--text-muted)',
+    marginBottom: '24px',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const h1Style: React.CSSProperties = {
+    fontSize: '64px',
+    fontWeight: 700,
+    letterSpacing: '-0.02em',
+    color: 'var(--text-primary)',
+    marginBottom: '24px',
+    lineHeight: 1.2,
+    maxWidth: '800px',
+    margin: '0 auto 24px',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const leadStyle: React.CSSProperties = {
+    fontSize: '18px',
+    color: 'var(--text-secondary)',
+    maxWidth: '600px',
+    margin: '0 auto 48px',
+    lineHeight: 1.6,
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const heroCTAContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: '16px',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  };
+
+  const primaryButtonStyle: React.CSSProperties = {
+    backgroundColor: 'var(--interactive)',
+    color: 'var(--interactive-fg)',
+    border: 'none',
+    padding: '12px 32px',
+    borderRadius: 'var(--radius)',
+    fontSize: '16px',
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const secondaryButtonStyle: React.CSSProperties = {
+    backgroundColor: 'transparent',
+    color: 'var(--text-primary)',
+    border: '1px solid var(--border-default)',
+    padding: '12px 32px',
+    borderRadius: 'var(--radius)',
+    fontSize: '16px',
+    fontWeight: 600,
+    cursor: 'pointer',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const statsStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-0)',
+    borderTop: '1px solid var(--border-subtle)',
+    borderBottom: '1px solid var(--border-subtle)',
+    padding: '64px 32px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '32px',
+    textAlign: 'center',
+  };
+
+  const statItemStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+  };
+
+  const statNumberStyle: React.CSSProperties = {
+    fontSize: '40px',
+    fontWeight: 700,
+    color: 'var(--text-primary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const statLabelStyle: React.CSSProperties = {
+    fontSize: '14px',
+    color: 'var(--text-secondary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const featuresStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-0)',
+    padding: '80px 32px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '1px',
+    backgroundColor: 'var(--border-subtle)',
+  };
+
+  const featureItemStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-1)',
+    padding: '40px 24px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+  };
+
+  const featureTitleStyle: React.CSSProperties = {
+    fontSize: '18px',
+    fontWeight: 600,
+    color: 'var(--text-primary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const featureDescStyle: React.CSSProperties = {
+    fontSize: '14px',
+    color: 'var(--text-secondary)',
+    lineHeight: 1.6,
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const ctaSectionStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-1)',
+    padding: '80px 32px',
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '32px',
+  };
+
+  const ctaHeadlineStyle: React.CSSProperties = {
+    fontSize: '40px',
+    fontWeight: 700,
+    color: 'var(--text-primary)',
+    maxWidth: '600px',
+    fontFamily: 'var(--font-sans)',
+  };
+
+  const footerStyle: React.CSSProperties = {
+    backgroundColor: 'var(--surface-1)',
+    borderTop: '1px solid var(--border-subtle)',
+    padding: '32px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    fontSize: '14px',
+    color: 'var(--text-secondary)',
+    fontFamily: 'var(--font-sans)',
+  };
+
   return (
-    <div className="bg-[#0d3321]">
-      {/* Hero Section */}
-      <section className="relative min-h-[600px] flex items-center justify-center text-center px-4 py-24">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-[#4ade80] to-[#22c55e] bg-clip-text text-transparent">
-              Your Health,
-            </span>
-            <br />
-            <span className="text-[#fefdf8]">Abundant.</span>
-          </h1>
-          <p className="text-xl text-[#d1f2eb] mb-8 max-w-2xl mx-auto">
-            Track your nutrition, movement, sleep, and mental wellness all in one beautiful platform. Your journey to optimal health starts here.
-          </p>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <button className="px-8 py-3 bg-[#4ade80] text-[#0d3321] font-semibold rounded-lg hover:bg-[#22c55e] transition">
-              Start Free Trial
-            </button>
-            <Link href="/dashboard" className="px-8 py-3 border-2 border-[#4ade80] text-[#4ade80] font-semibold rounded-lg hover:bg-[#1a5c3a] transition">
-              See Dashboard
-            </Link>
-          </div>
+    <div style={{ backgroundColor: 'var(--surface-0)' }}>
+      <header style={headerStyle}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)' }}>TOA</div>
+          <span style={{ fontSize: '14px', color: 'var(--text-secondary)' }}>Health</span>
         </div>
-      </section>
-
-      {/* Features Grid */}
-      <section className="max-w-7xl mx-auto px-4 py-24">
-        <h2 className="text-4xl font-bold text-center mb-16 text-[#fefdf8]">
-          Everything You Need
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-[#1a5c3a] rounded-xl p-8 border border-[#2a8c5a] hover:border-[#4ade80] transition">
-            <div className="text-4xl mb-4">🌿</div>
-            <h3 className="text-xl font-bold text-[#4ade80] mb-2">Nutrition</h3>
-            <p className="text-[#d1f2eb]">Track your meals, monitor macros, and optimize your diet with intelligent insights.</p>
+        <nav style={navContainerStyle}>
+          <div style={navLinksStyle}>
+            <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Health</a>
+            <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Nutrition</a>
+            <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Movement</a>
+            <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Sleep</a>
           </div>
+          <button style={ctaButtonStyle}>Start Free</button>
+        </nav>
+      </header>
 
-          <div className="bg-[#1a5c3a] rounded-xl p-8 border border-[#2a8c5a] hover:border-[#4ade80] transition">
-            <div className="text-4xl mb-4">🏃</div>
-            <h3 className="text-xl font-bold text-[#4ade80] mb-2">Movement</h3>
-            <p className="text-[#d1f2eb]">Log workouts, count steps, and celebrate your active lifestyle every single day.</p>
-          </div>
-
-          <div className="bg-[#1a5c3a] rounded-xl p-8 border border-[#2a8c5a] hover:border-[#4ade80] transition">
-            <div className="text-4xl mb-4">🧠</div>
-            <h3 className="text-xl font-bold text-[#4ade80] mb-2">Mental Wellness</h3>
-            <p className="text-[#d1f2eb]">Check your mood, practice meditation, and prioritize your mental health daily.</p>
-          </div>
-
-          <div className="bg-[#1a5c3a] rounded-xl p-8 border border-[#2a8c5a] hover:border-[#4ade80] transition">
-            <div className="text-4xl mb-4">😴</div>
-            <h3 className="text-xl font-bold text-[#4ade80] mb-2">Sleep</h3>
-            <p className="text-[#d1f2eb]">Monitor sleep cycles, track rest quality, and wake up feeling refreshed.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Health Score Preview */}
-      <section className="max-w-7xl mx-auto px-4 py-24">
-        <h2 className="text-4xl font-bold text-center mb-16 text-[#fefdf8]">
-          Your Health Score
-        </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="flex justify-center">
-            <div className="relative w-64 h-64 rounded-full bg-[#1a5c3a] border-8 border-[#4ade80] flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-6xl font-bold text-[#4ade80] mb-2">87</div>
-                <div className="text-[#d1f2eb]">out of 100</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="space-y-6">
-            <div>
-              <div className="flex justify-between mb-2">
-                <span className="text-[#fefdf8] font-semibold">Nutrition</span>
-                <span className="text-[#4ade80]">92%</span>
-              </div>
-              <div className="w-full bg-[#1a5c3a] rounded-full h-2 border border-[#2a8c5a]">
-                <div className="bg-[#4ade80] h-full rounded-full" style={{ width: '92%' }}></div>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex justify-between mb-2">
-                <span className="text-[#fefdf8] font-semibold">Movement</span>
-                <span className="text-[#4ade80]">85%</span>
-              </div>
-              <div className="w-full bg-[#1a5c3a] rounded-full h-2 border border-[#2a8c5a]">
-                <div className="bg-[#4ade80] h-full rounded-full" style={{ width: '85%' }}></div>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex justify-between mb-2">
-                <span className="text-[#fefdf8] font-semibold">Sleep</span>
-                <span className="text-[#4ade80]">78%</span>
-              </div>
-              <div className="w-full bg-[#1a5c3a] rounded-full h-2 border border-[#2a8c5a]">
-                <div className="bg-[#4ade80] h-full rounded-full" style={{ width: '78%' }}></div>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex justify-between mb-2">
-                <span className="text-[#fefdf8] font-semibold">Mental Health</span>
-                <span className="text-[#4ade80]">88%</span>
-              </div>
-              <div className="w-full bg-[#1a5c3a] rounded-full h-2 border border-[#2a8c5a]">
-                <div className="bg-[#4ade80] h-full rounded-full" style={{ width: '88%' }}></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="max-w-7xl mx-auto px-4 py-24">
-        <h2 className="text-4xl font-bold text-center mb-16 text-[#fefdf8]">
-          Loved by Our Community
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-[#1a5c3a] rounded-xl p-8 border border-[#2a8c5a]">
-            <div className="flex gap-1 mb-4">
-              {[...Array(5)].map((_, i) => (
-                <span key={i} className="text-[#4ade80]">★</span>
-              ))}
-            </div>
-            <p className="text-[#d1f2eb] mb-4">
-              This platform completely transformed how I think about my health. The comprehensive tracking and beautiful interface make it a joy to use daily.
-            </p>
-            <div className="font-semibold text-[#fefdf8]">Sarah Chen</div>
-            <div className="text-[#4ade80] text-sm">Health Coach</div>
-          </div>
-
-          <div className="bg-[#1a5c3a] rounded-xl p-8 border border-[#2a8c5a]">
-            <div className="flex gap-1 mb-4">
-              {[...Array(5)].map((_, i) => (
-                <span key={i} className="text-[#4ade80]">★</span>
-              ))}
-            </div>
-            <p className="text-[#d1f2eb] mb-4">
-              Finally a wellness app that's actually designed for real people. The insights are actionable and the community is incredibly supportive.
-            </p>
-            <div className="font-semibold text-[#fefdf8]">Marcus Johnson</div>
-            <div className="text-[#4ade80] text-sm">Athlete</div>
-          </div>
-
-          <div className="bg-[#1a5c3a] rounded-xl p-8 border border-[#2a8c5a]">
-            <div className="flex gap-1 mb-4">
-              {[...Array(5)].map((_, i) => (
-                <span key={i} className="text-[#4ade80]">★</span>
-              ))}
-            </div>
-            <p className="text-[#d1f2eb] mb-4">
-              I've tried dozens of health apps, but AoA Wellness is the only one I actually stick with. It's simple, beautiful, and truly effective.
-            </p>
-            <div className="font-semibold text-[#fefdf8]">Emma Williams</div>
-            <div className="text-[#4ade80] text-sm">Wellness Enthusiast</div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="max-w-7xl mx-auto px-4 py-24 text-center">
-        <h2 className="text-4xl font-bold mb-6 text-[#fefdf8]">
-          Ready to Start Your Journey?
-        </h2>
-        <p className="text-xl text-[#d1f2eb] mb-8">
-          Join thousands of people pursuing abundant health.
+      <section style={heroStyle}>
+        <div style={eyebrowStyle}>Your Wellness OS</div>
+        <h1 style={h1Style}>Health, optimized.{'\n'}For every dimension.</h1>
+        <p style={leadStyle}>
+          Track nutrition, movement, sleep, and mental wellbeing in one unified platform. Built for those who take their health seriously.
         </p>
-        <button className="px-8 py-3 bg-[#4ade80] text-[#0d3321] font-semibold rounded-lg hover:bg-[#22c55e] transition">
-          Start Your Free Trial
-        </button>
+        <div style={heroCTAContainerStyle}>
+          <button style={primaryButtonStyle}>Start Free</button>
+          <button style={secondaryButtonStyle}>View Demo</button>
+        </div>
       </section>
+
+      <section style={statsStyle}>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>50K+</div>
+          <div style={statLabelStyle}>Members</div>
+        </div>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>2M+</div>
+          <div style={statLabelStyle}>Data points</div>
+        </div>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>94%</div>
+          <div style={statLabelStyle}>Avg. score improvement</div>
+        </div>
+        <div style={statItemStyle}>
+          <div style={statNumberStyle}>4</div>
+          <div style={statLabelStyle}>Core dimensions</div>
+        </div>
+      </section>
+
+      <section style={featuresStyle}>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Nutrition Intelligence</div>
+          <p style={featureDescStyle}>AI-powered meal tracking with macronutrient analysis and personalized recommendations.</p>
+        </div>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Movement Tracking</div>
+          <p style={featureDescStyle}>Comprehensive activity monitoring across cardio, strength, flexibility, and daily movement.</p>
+        </div>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Sleep Analysis</div>
+          <p style={featureDescStyle}>Deep sleep insights with actionable recovery strategies and circadian optimization.</p>
+        </div>
+        <div style={featureItemStyle}>
+          <div style={featureTitleStyle}>Mental Wellness</div>
+          <p style={featureDescStyle}>Meditation, stress tracking, and psychological resilience building integrated seamlessly.</p>
+        </div>
+      </section>
+
+      <section style={ctaSectionStyle}>
+        <h2 style={ctaHeadlineStyle}>Begin Your Journey</h2>
+        <div style={heroCTAContainerStyle}>
+          <button style={primaryButtonStyle}>Get Started</button>
+          <button style={secondaryButtonStyle}>Learn More</button>
+        </div>
+      </section>
+
+      <footer style={footerStyle}>
+        <div>TOA Health</div>
+        <div>Copyright 2026. All rights reserved.</div>
+      </footer>
     </div>
   );
 }

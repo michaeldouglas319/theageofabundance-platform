@@ -1,5 +1,4 @@
 {
   "buildCommand": "cd ../.. && pnpm install && pnpm turbo build --filter=@repo/toa-me",
-  "framework": "nextjs",
-  "sourceFilesOutsideRootDirectory": true
+  "framework": "nextjs"
 }
