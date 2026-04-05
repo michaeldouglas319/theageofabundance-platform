@@ -2,13 +2,14 @@
 
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { Edit2, Trash2, Plus, Copy } from 'lucide-react'
-import { useState } from 'react'
+import { use, useState } from 'react'
 
-export default function ProjectDetailPage({ params }: { params: { id: string } }) {
+export default function ProjectDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params)
   const [activeTab, setActiveTab] = useState('overview')
 
   const project = {
-    id: params.id,
+    id,
     name: 'Web Dashboard',
     framework: 'Next.js 15',
     status: 'Ready',

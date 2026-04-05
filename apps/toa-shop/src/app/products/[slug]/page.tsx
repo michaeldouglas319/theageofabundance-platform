@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { use, useState } from 'react';
 import Link from 'next/link';
 
 const productData: Record<string, any> = {
@@ -96,9 +96,10 @@ const productData: Record<string, any> = {
   }
 };
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
+export default function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params);
   const [quantity, setQuantity] = useState(1);
-  const product = productData[params.slug] || productData.journal;
+  const product = productData[slug] || productData.journal;
 
   const handleAddToCart = () => {
     alert(`Added ${quantity} ${product.name}(s) to cart`);

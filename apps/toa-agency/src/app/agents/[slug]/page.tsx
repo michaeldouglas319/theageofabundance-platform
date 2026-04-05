@@ -1,13 +1,14 @@
 'use client'
 
 import { Download, Star, User } from 'lucide-react'
-import { useState } from 'react'
+import { use, useState } from 'react'
 
-export default function AgentDetailPage({ params }: { params: { slug: string } }) {
+export default function AgentDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params)
   const [activeTab, setActiveTab] = useState('overview')
 
   const agent = {
-    slug: params.slug,
+    slug,
     name: 'Web Scraper',
     icon: '🕷️',
     rating: 4.8,

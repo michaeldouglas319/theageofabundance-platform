@@ -1,9 +1,10 @@
 'use client'
 
+import { use } from 'react'
 import { Users, Heart, MessageCircle, Repeat2, Bookmark } from 'lucide-react'
 
-export default function CommunityPage({ params }: { params: { id: string } }) {
-  const communityId = params.id
+export default function CommunityPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id: communityId } = use(params)
 
   const community = {
     id: communityId,
