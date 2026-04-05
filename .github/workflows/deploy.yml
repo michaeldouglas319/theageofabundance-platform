@@ -1,0 +1,221 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# deploy.yml — Vercel deployment for theageofabundance-platform monorepo
+#
+# Triggers:
+#   push → main          Builds & deploys ALL apps to preview (no production)
+#   workflow_dispatch    Specify `app` to promote a single app to production
+#
+# Required GitHub Secrets:
+#   VERCEL_TOKEN                       — Vercel personal access token
+#   VERCEL_ORG_ID                      — Vercel team/org ID (team_xxx)
+#   VERCEL_PROJECT_ID_TOA_AGENCY       — prj_xxx for toa-agency
+#   VERCEL_PROJECT_ID_TOA_APP          — prj_xxx for toa-app
+#   VERCEL_PROJECT_ID_TOA_CLOUD        — prj_xxx for toa-cloud
+#   VERCEL_PROJECT_ID_TOA_ME           — prj_xxx for toa-me
+#   VERCEL_PROJECT_ID_TOA_NET          — prj_xxx for toa-net
+#   VERCEL_PROJECT_ID_TOA_ORG          — prj_xxx for toa-org
+#   VERCEL_PROJECT_ID_TOA_SHOP         — prj_xxx for toa-shop
+#   VERCEL_PROJECT_ID_TOA_SPACE        — prj_xxx for toa-space
+#   VERCEL_PROJECT_ID_WIKI             — prj_xxx for wiki
+#   VERCEL_PROJECT_ID_PULSE            — prj_xxx for pulse
+#   VERCEL_PROJECT_ID_STUDIO           — prj_xxx for studio
+#
+# App directory → Vercel project name mapping:
+#   toa-agency  → theageofabundance-agency
+#   toa-app     → theageofabundance-app
+#   toa-cloud   → theageofabundance-cloud
+#   toa-me      → theageofabundance-me
+#   toa-net     → theageofabundance-net
+#   toa-org     → theageofabundance-org
+#   toa-shop    → theageofabundance-shop
+#   toa-space   → theageofabundance-space
+#   wiki        → ageofabundance-wiki
+#   pulse       → theageofabundance-pulse
+#   studio      → theageofabundance-studio
+# ──────────────────────────────────────────────────────────────────────────────
+
+name: Deploy to Vercel
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      app:
+        description: >
+          App to promote to production.
+          Leave empty to preview-deploy all apps.
+        required: false
+        type: choice
+        options:
+          - ''
+          - toa-agency
+          - toa-app
+          - toa-cloud
+          - toa-me
+          - toa-net
+          - toa-org
+          - toa-shop
+          - toa-space
+          - wiki
+          - pulse
+          - studio
+
+# ── Preview: all apps on push to main (or dispatch with no app) ───────────────
+jobs:
+  preview-all:
+    name: "Preview — ${{ matrix.app }}"
+    if: >
+      github.event_name == 'push' ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.app == '')
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - app: toa-agency
+            vercel_project: theageofabundance-agency
+          - app: toa-app
+            vercel_project: theageofabundance-app
+          - app: toa-cloud
+            vercel_project: theageofabundance-cloud
+          - app: toa-me
+            vercel_project: theageofabundance-me
+          - app: toa-net
+            vercel_project: theageofabundance-net
+          - app: toa-org
+            vercel_project: theageofabundance-org
+          - app: toa-shop
+            vercel_project: theageofabundance-shop
+          - app: toa-space
+            vercel_project: theageofabundance-space
+          - app: wiki
+            vercel_project: ageofabundance-wiki
+          - app: pulse
+            vercel_project: theageofabundance-pulse
+          - app: studio
+            vercel_project: theageofabundance-studio
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Resolve Vercel project ID
+        id: project
+        run: |
+          case "${{ matrix.app }}" in
+            toa-agency) echo "id=${{ secrets.VERCEL_PROJECT_ID_TOA_AGENCY }}" >> $GITHUB_OUTPUT ;;
+            toa-app)    echo "id=${{ secrets.VERCEL_PROJECT_ID_TOA_APP }}"    >> $GITHUB_OUTPUT ;;
+            toa-cloud)  echo "id=${{ secrets.VERCEL_PROJECT_ID_TOA_CLOUD }}"  >> $GITHUB_OUTPUT ;;
+            toa-me)     echo "id=${{ secrets.VERCEL_PROJECT_ID_TOA_ME }}"     >> $GITHUB_OUTPUT ;;
+            toa-net)    echo "id=${{ secrets.VERCEL_PROJECT_ID_TOA_NET }}"    >> $GITHUB_OUTPUT ;;
+            toa-org)    echo "id=${{ secrets.VERCEL_PROJECT_ID_TOA_ORG }}"    >> $GITHUB_OUTPUT ;;
+            toa-shop)   echo "id=${{ secrets.VERCEL_PROJECT_ID_TOA_SHOP }}"   >> $GITHUB_OUTPUT ;;
+            toa-space)  echo "id=${{ secrets.VERCEL_PROJECT_ID_TOA_SPACE }}"  >> $GITHUB_OUTPUT ;;
+            wiki)       echo "id=${{ secrets.VERCEL_PROJECT_ID_WIKI }}"       >> $GITHUB_OUTPUT ;;
+            pulse)      echo "id=${{ secrets.VERCEL_PROJECT_ID_PULSE }}"      >> $GITHUB_OUTPUT ;;
+            studio)     echo "id=${{ secrets.VERCEL_PROJECT_ID_STUDIO }}"     >> $GITHUB_OUTPUT ;;
+            *) echo "Unknown app: ${{ matrix.app }}" && exit 1 ;;
+          esac
+
+      - name: Pull Vercel project config
+        working-directory: apps/${{ matrix.app }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ steps.project.outputs.id }}
+        run: vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
+
+      - name: Build
+        working-directory: apps/${{ matrix.app }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ steps.project.outputs.id }}
+        run: vercel build --token=$VERCEL_TOKEN
+
+      - name: Deploy preview
+        working-directory: apps/${{ matrix.app }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ steps.project.outputs.id }}
+        run: |
+          DEPLOY_URL=$(vercel deploy --prebuilt --token=$VERCEL_TOKEN)
+          echo "Preview URL: $DEPLOY_URL"
+          echo "preview_url=$DEPLOY_URL" >> $GITHUB_STEP_SUMMARY
+          echo "### Preview deployed: ${{ matrix.app }}" >> $GITHUB_STEP_SUMMARY
+          echo "$DEPLOY_URL" >> $GITHUB_STEP_SUMMARY
+
+# ── Production: single app via workflow_dispatch ──────────────────────────────
+  promote-production:
+    name: "Promote to Production — ${{ github.event.inputs.app }}"
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.app != ''
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: Resolve Vercel project ID
+        id: project
+        run: |
+          case "${{ github.event.inputs.app }}" in
+            toa-agency) echo "id=${{ secrets.VERCEL_PROJECT_ID_TOA_AGENCY }}" >> $GITHUB_OUTPUT ;;
+            toa-app)    echo "id=${{ secrets.VERCEL_PROJECT_ID_TOA_APP }}"    >> $GITHUB_OUTPUT ;;
+            toa-cloud)  echo "id=${{ secrets.VERCEL_PROJECT_ID_TOA_CLOUD }}"  >> $GITHUB_OUTPUT ;;
+            toa-me)     echo "id=${{ secrets.VERCEL_PROJECT_ID_TOA_ME }}"     >> $GITHUB_OUTPUT ;;
+            toa-net)    echo "id=${{ secrets.VERCEL_PROJECT_ID_TOA_NET }}"    >> $GITHUB_OUTPUT ;;
+            toa-org)    echo "id=${{ secrets.VERCEL_PROJECT_ID_TOA_ORG }}"    >> $GITHUB_OUTPUT ;;
+            toa-shop)   echo "id=${{ secrets.VERCEL_PROJECT_ID_TOA_SHOP }}"   >> $GITHUB_OUTPUT ;;
+            toa-space)  echo "id=${{ secrets.VERCEL_PROJECT_ID_TOA_SPACE }}"  >> $GITHUB_OUTPUT ;;
+            wiki)       echo "id=${{ secrets.VERCEL_PROJECT_ID_WIKI }}"       >> $GITHUB_OUTPUT ;;
+            pulse)      echo "id=${{ secrets.VERCEL_PROJECT_ID_PULSE }}"      >> $GITHUB_OUTPUT ;;
+            studio)     echo "id=${{ secrets.VERCEL_PROJECT_ID_STUDIO }}"     >> $GITHUB_OUTPUT ;;
+            *) echo "Unknown app: ${{ github.event.inputs.app }}" && exit 1 ;;
+          esac
+
+      - name: Pull Vercel project config (production)
+        working-directory: apps/${{ github.event.inputs.app }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ steps.project.outputs.id }}
+        run: vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+
+      - name: Build (production)
+        working-directory: apps/${{ github.event.inputs.app }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ steps.project.outputs.id }}
+        run: vercel build --prod --token=$VERCEL_TOKEN
+
+      - name: Deploy to production
+        working-directory: apps/${{ github.event.inputs.app }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ steps.project.outputs.id }}
+        run: |
+          DEPLOY_URL=$(vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN)
+          echo "Production URL: $DEPLOY_URL"
+          echo "### Production deployed: ${{ github.event.inputs.app }}" >> $GITHUB_STEP_SUMMARY
+          echo "$DEPLOY_URL" >> $GITHUB_STEP_SUMMARY
