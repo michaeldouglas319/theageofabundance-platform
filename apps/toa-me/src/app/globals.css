@@ -1,0 +1,28 @@
+@import 'tailwindcss';
+
+:root {
+  --health-deep: #0d3321;
+  --health-mid: #1a5c3a;
+  --health-accent: #4ade80;
+  --health-cream: #fefdf8;
+}
+
+body {
+  background-color: var(--health-deep);
+  color: var(--health-cream);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
