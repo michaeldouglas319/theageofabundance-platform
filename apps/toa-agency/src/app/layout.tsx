@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'TOA Agency — Your AI Workforce',
-  description: 'Deploy intelligent agents for any mission.',
+  title: 'The Age of Abundance · Agency',
+  description: 'Deploy intelligent AI agents for any mission or workflow — pre-built, customizable, and enterprise-ready.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

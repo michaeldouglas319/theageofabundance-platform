@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'TOA Health — Your Wellness OS',
-  description: 'Track and optimize every dimension of your health.',
+  title: 'The Age of Abundance · Health',
+  description: 'Track and optimize every dimension of your health — nutrition, movement, sleep, and mental wellbeing.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

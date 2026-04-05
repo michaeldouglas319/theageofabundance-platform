@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'TOA Foundation — Advancing Human Flourishing',
-  description: 'A nonprofit at the frontier of human potential.',
+  title: 'The Age of Abundance · Foundation',
+  description: 'Nonprofit research, open publishing, and advocacy for human flourishing at a global scale.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'The Age of Abundance — Platform Hub',
-  description: 'One ecosystem. Infinite possibility.',
+  title: 'The Age of Abundance',
+  description: 'One ecosystem. Eight integrated platforms unified by a single mission: advancing human flourishing at every scale.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

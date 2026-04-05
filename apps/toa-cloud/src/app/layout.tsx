@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'TOA Cloud — Deploy at the Speed of Thought',
-  description: 'Enterprise infrastructure for abundance builders.',
+  title: 'The Age of Abundance · Cloud',
+  description: 'Enterprise infrastructure built for abundance builders — global edge, zero-config deploy, infinite scale.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

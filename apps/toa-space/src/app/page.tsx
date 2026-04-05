@@ -202,10 +202,10 @@ export default function Page() {
   return (
     <div style={{ backgroundColor: 'var(--surface-0)' }}>
       <header style={headerStyle}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <div style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-primary)' }}>TOA</div>
-          <span style={{ fontSize: '14px', color: 'var(--text-secondary)' }}>Space</span>
-        </div>
+        <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: 'var(--text-primary)', fontWeight: 600, fontSize: 15 }}>
+          <span style={{ width: 26, height: 26, background: 'var(--text-primary)', color: 'var(--surface-0)', borderRadius: 4, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, letterSpacing: '0.02em', flexShrink: 0 }}>TOA</span>
+          Space
+        </a>
         <nav style={navContainerStyle}>
           <div style={navLinksStyle}>
             <a href="#" style={{ textDecoration: 'none', color: 'inherit' }}>Templates</a>
